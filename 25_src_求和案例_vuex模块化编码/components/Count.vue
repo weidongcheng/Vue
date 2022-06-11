@@ -28,16 +28,18 @@
         },
         computed:{
           //借助mapState生成计算属性，从state中取数据（数组写法）
-          ...mapState(['sum','school','subject','personList']),
+          // ...mapState(['countAbout','personAbout']),
+          ...mapState('countAbout',['sum','school','subject']),
+          ...mapState('personAbout',['personList']),
           //借助mapState生成计算属性，从getters中取数据（数组写法）
-          ...mapGetters(['bigSum'])
+          ...mapGetters('countAbout',['bigSum'])
         },
         methods:{
           //借助mapMutations生成对应的方法，方法中会调用commit去联系Mutations（对象写法）
-          ...mapMutations({increment:'JIA',decrement:'JIAN'}),
+          ...mapMutations('countAbout',{increment:'JIA',decrement:'JIAN'}),
 
           //借助mapActions生成对应的方法，方法中会调用dispatch去联系Actions（对象写法）
-          ...mapActions({incrementOdd:'jiaOdd',incrementWait:'jiaWait'})
+          ...mapActions('countAbout',{incrementOdd:'jiaOdd',incrementWait:'jiaWait'})
 
         },
         mounted() {
